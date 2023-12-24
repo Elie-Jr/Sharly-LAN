@@ -45,7 +45,7 @@
                     
                             
                         <form action="/upload/{{ current_path }}" method="post" enctype="multipart/form-data">
-                            <input type="file" name="file">
+                            <input type="file" name="files[]" multiple>
                             <input type="submit" value="Send">
                         </form>
                     
@@ -114,7 +114,7 @@
                       
                         {% for file in files %}
                             <tr>
-                                <th scope="row"><img style="width: 33px; max-height: 37px;" src="{% if  file.file_extension  == '.png'  or file.file_extension  == '.jpg' %}/shared/{{ current_path }}/{{ file.name }}
+                                <th scope="row"><img style="width: 33px; max-height: 37px;" src="{% if  file.file_extension  == '.png'  or file.file_extension  == '.jpg' or file.file_extension  == '.jpeg' %}/shared/{{ current_path }}/{{ file.name }}
                                     {% elif  file.file_extension  == '.pdf' %}/static/img/pdf.png
                                     {% elif  file.file_extension  == '.doc' %}/static/img/doc.png
                                     {% elif  file.file_extension  == '.mp3'  %}/static/img/music.png 

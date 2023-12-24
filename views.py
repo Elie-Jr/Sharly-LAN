@@ -26,6 +26,7 @@ file_manager = FileManager(UPLOAD_FOLDER)
 
 #=========Home URL's=============
 @app.route('/folder/')
+@app.route('/')
 def index():
     message_class = request.args.get('message_class', 'message')
     return render_template('index.html', current_path='', folders=file_manager.get_folders(''), message_class=message_class)
@@ -98,7 +99,7 @@ def show_files(folder_path):
 
 @app.route('/upload/<path:folder_path>', methods=['POST'])
 def upload(folder_path):
-    file = request.files['file']
+    file = request.files.getlist("files[]")
     folder_path = folder_path   
     upload_files = file_manager.upload_file(folder_path, file)
 

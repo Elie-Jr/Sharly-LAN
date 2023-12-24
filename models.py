@@ -65,6 +65,7 @@ class FileManager:
     def upload_file(self, folder_path, file):
         file = file
         folder_full_path = os.path.join(self.base_folder, folder_path)
+        print(file)
 
         try:
 
@@ -72,15 +73,16 @@ class FileManager:
                 print ('ooooooooooooooooooooooo')
                 print(folder_full_path)
                 return '0'
-    
+               
+            for f in file:
 
-            if file.filename == '':
-                print('iiiiiiiiiii')
-                return "2"
+                # if f.filename == '':
+                #     print('iiiiiiiiiii')
+                #     return "2"
 
-            if file:
-                file.save(os.path.join(self.base_folder, folder_path, file.filename))
-                return True
+                
+                f.save(os.path.join(self.base_folder, folder_path, f.filename))
+            return True
             
         except:
             print('yyyyyyyyyyyyyyy')
